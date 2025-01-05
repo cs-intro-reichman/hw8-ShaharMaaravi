@@ -64,6 +64,9 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
+        name1 = name1.toLowerCase(); 
+        name2 = name2.toLowerCase();
+        
         boolean flag1 = false; 
         boolean flag2 = false; 
         int index = -1;
