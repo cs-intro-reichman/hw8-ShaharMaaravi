@@ -68,9 +68,12 @@ public class Network {
         if (name1.equals(name2)) return false; 
 
         User user1 = null; 
+        User user2 = null; 
         for (int i = 0; i < userCount; i++) { 
             if (this.users[i].getName().equals(name1)) user1 = this.users[i];
+            if (this.users[i].getName().equals(name2)) user2 = this.users[i];
         }
+        if (user1 == null || user2 == null) return false;
         if (user1.follows(name2)) return false;
 
         boolean flag1 = false; 
