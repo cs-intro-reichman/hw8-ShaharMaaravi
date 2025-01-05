@@ -30,11 +30,19 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-        if (name == null) return null; 
-        for(int i = 0; i < userCount; i++) { 
-            if (this.users[i] != null && this.users[i].getName().equals(name)) return this.users[i]; 
+        if (name == null) {
+            return null; 
         }
-        return null;
+        
+        for (int i = 0; i < userCount; i++) { 
+            User currentUser = this.users[i];
+            
+            if (currentUser != null && currentUser.getName().equals(name)) {
+                return currentUser; 
+            }
+        }
+        
+        return null; 
     }
 
     /** Adds a new user with the given name to this network.
@@ -99,6 +107,7 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
+        if (userCount == 0) return null; 
         int currentBest = 0; 
         User targetedUser = null; 
         for (int i = 0; i < userCount; i++) { 
@@ -107,7 +116,7 @@ public class Network {
                 currentBest = followeeCount(users[i].getName());
             }
         }
-        return targetedUser.getName();
+        return targetedUser != null ? targetedUser.getName() : null;
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
