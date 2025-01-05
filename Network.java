@@ -34,6 +34,7 @@ public class Network {
             return null; 
         }
         
+        name = name.substring(0, 1).toUpperCase() + name.substring(1); 
         for (int i = 0; i < userCount; i++) { 
             User currentUser = this.users[i];
             
